@@ -1,0 +1,11 @@
+h1 {
+    text-align: center;
+}
+
+div.article.even {
+    background-color: #72E1D1;
+}
+
+div.article.odd {
+    background-color: #B5D8CC;
+}
