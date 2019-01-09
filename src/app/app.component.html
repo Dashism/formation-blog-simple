@@ -1,9 +1,26 @@
 <h1>Mon super blog avec Angular 7</h1>
 <div class="container">
-  <div class="article"
-    [ngClass]="{ 'even': isEven, 'odd': isOdd}"
-    *ngFor="let article of articles; even as isEven; odd as isOdd">
-    <h2>{{ article.title }}</h2>
-    <p>{{ article.content }}</p>
-  </div>
+  <button (click)="swapDisplay()">{{ isList ? 'Créer un article' : 'Revenir à la liste' }}</button>
+  <ng-container *ngIf="isList; else elseFormTpl">
+    <div class="article" [ngClass]="{ 'even': isEven, 'odd': isOdd}" *ngFor="let article of articles; even as isEven; odd as isOdd">
+      <h2>{{ article.title }}</h2>
+      <p>{{ article.content }}</p>
+    </div>
+  </ng-container>
 </div>
+
+<ng-template #elseFormTpl>
+  <form (ngSubmit)="validateForm(articleForm)" #articleForm="ngForm">
+    <div class="form-group">
+      <label for="title">Titre :</label>
+      <input [(ngModel)]="modelArticle.title" required
+        id="title" name="title" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="content">Contenu :</label>
+      <textarea [(ngModel)]="modelArticle.content"
+      id="content" name="content" required class="form-control"></textarea>
+    </div>
+    <button [disabled]="articleForm.invalid"            class="btn btn-primary">Valider</button>
+  </form>
+</ng-template>

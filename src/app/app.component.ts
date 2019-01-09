@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Article } from './article';
+import { NgForm } from '@angular/forms';
 
-const LIST_ARTICLES = [
+const LIST_ARTICLES: Array<Article> = [
   {
       "id": 0,
       "title": "Article n°1",
@@ -31,11 +33,30 @@ const LIST_ARTICLES = [
 })
 export class AppComponent {
   title: string;
-  articles: Array<any>;
+  articles: Array<Article>;
+  isList: boolean;
+  modelArticle: Article;
 
   constructor() {
     this.title = 'blog';
     this.articles = new Array();
     this.articles.push(...LIST_ARTICLES);
+    this.isList = true;
+    this.modelArticle = new Article('', '');
+  }
+
+  swapDisplay() {
+    this.isList = !this.isList;
+  }
+
+  validateForm(myForm: NgForm) {
+    // Ajout du nouvel article à la liste.
+    // Attention : il faut séparer les instances
+    // entre l'objet dans la liste et l'objet
+    // dans le formulaire.
+    this.articles.push(
+      new Article(this.modelArticle.title,
+        this.modelArticle.content));
+    myForm.resetForm(new Article('', ''));
   }
 }
