@@ -56,7 +56,8 @@ export class AppComponent {
     // dans le formulaire.
     this.articles.push(
       new Article(this.modelArticle.title,
-        this.modelArticle.content));
+        this.modelArticle.content,
+        this.modelArticle.id));
     myForm.resetForm(new Article('', ''));
   }
 }
