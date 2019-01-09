@@ -3,7 +3,11 @@
   <button (click)="swapDisplay()">{{ isList ? 'Créer un article' : 'Revenir à la liste' }}</button>
   <ng-container *ngIf="isList; else elseFormTpl">
     <div class="article" [ngClass]="{ 'even': isEven, 'odd': isOdd}" *ngFor="let article of articles; even as isEven; odd as isOdd">
-      <h2>{{ article.title }}</h2>
+      <h2>
+        {{ article.title }}
+        <img class="list-icon" src="/assets/delete.svg"
+        (click)="delete(article.id)">
+      </h2>
       <p>{{ article.content }}</p>
     </div>
   </ng-container>

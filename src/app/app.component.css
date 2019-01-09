@@ -9,3 +9,7 @@ div.article.even {
 div.article.odd {
     background-color: #B5D8CC;
 }
+
+img.list-icon {
+    width: 24px;
+}

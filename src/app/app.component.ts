@@ -60,4 +60,13 @@ export class AppComponent {
         this.modelArticle.id));
     myForm.resetForm(new Article('', ''));
   }
+
+  delete(id: number) {
+    const index = this.articles.findIndex(
+      (article: Article) => article.id === id
+    );
+    if (index >= 0) {
+      this.articles.splice(index, 1);
+    }
+  }
 }
