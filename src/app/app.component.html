@@ -7,6 +7,8 @@
         {{ article.title }}
         <img class="list-icon" src="/assets/delete.svg"
         (click)="delete(article.id)">
+        <img class="list-icon" src="/assets/edit.svg"
+        (click)="edit(article)">
       </h2>
       <p>{{ article.content }}</p>
     </div>
@@ -18,7 +20,8 @@
     <div class="form-group">
       <label for="id">Identifiant :</label>
       <input [(ngModel)]="modelArticle.id" required
-        id="id" name="id" class="form-control">
+        id="id" name="id" class="form-control"
+        [disabled]="isEdit">
     </div>
     <div class="form-group">
       <label for="title">Titre :</label>
