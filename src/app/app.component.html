@@ -18,12 +18,6 @@
 <ng-template #elseFormTpl>
   <form (ngSubmit)="validateForm(articleForm)" #articleForm="ngForm">
     <div class="form-group">
-      <label for="id">Identifiant :</label>
-      <input [(ngModel)]="modelArticle.id" required
-        id="id" name="id" class="form-control"
-        [disabled]="isEdit">
-    </div>
-    <div class="form-group">
       <label for="title">Titre :</label>
       <input [(ngModel)]="modelArticle.title" required
         id="title" name="title" class="form-control">
